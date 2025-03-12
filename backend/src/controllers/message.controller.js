@@ -47,6 +47,7 @@ export const sendMessage=async(req,res)=>{
             text,
             image:imageUrl,
         })
+        
        // console.log("msg obj:",newMessage);
         await newMessage.save();
         const savedmsg=await Message.find({senderId:senderId})
