@@ -48,10 +48,10 @@ export const sendMessage=async(req,res)=>{
             image:imageUrl,
         })
         
-       // console.log("msg obj:",newMessage);
+       
+       
         await newMessage.save();
-        const savedmsg=await Message.find({senderId:senderId})
-        //console.log("msg obj after saving:",savedmsg);
+
         const recieverSocketId=getReceiverSocketId(receiverId);
         if(recieverSocketId){
             io.to(recieverSocketId).emit("New Message",newMessage);

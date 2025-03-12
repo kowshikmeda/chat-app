@@ -42,17 +42,17 @@ export const signup=async (req,res)=>{
 
 export const login=async(req,res)=>{
     const {email,password}=req.body;
-    //console.log(email,password);
+  
     try{
       const user= await User.findOne({email});
-      //console.log("user details",user);
+     
       if(!user) return res.status(400).json({message:"Invalid email"});
 
       const isPasswordCorrect=await bcrypt.compare(password,user.password);
-      //console.log("ispassword correct",isPasswordCorrect);
+      
       if(!isPasswordCorrect)return  res.status(400).json({message:"Invalid password"});
       generateToken(user._id,res);
-      console.log(user);
+      
       res.status(200).json({
           _id:user._id,
           fullName:user.fullName,
@@ -93,7 +93,7 @@ try{
 
 export const checkAuth=(req,res)=>{
     try{
-        //console.log(req.user)
+       
         res.status(200).json(req.user);
     }catch(error){
         console.log("Error in checkAuth controller",error.message);
