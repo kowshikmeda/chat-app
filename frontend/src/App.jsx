@@ -14,11 +14,11 @@ const App = () => {
   const {authUser,checkAuth,ischeckingAuth,onlineUsers}=useAuthStore();
 
   const {theme}=useThemeStore();
-  console.log({onlineUsers});
+ 
   useEffect(()=>{
    checkAuth();
   },[checkAuth])
-  console.log(authUser);
+  
 if(ischeckingAuth && !authUser)return (
   <Loader className="size-10 animate-spin"/>
 )
